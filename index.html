@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fumble Hero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Menu -->
+    <div id="main-menu" class="screen active">
+        <div class="menu-bg-animation">
+            <div class="clumsy-silhouette silhouette-1"></div>
+            <div class="clumsy-silhouette silhouette-2"></div>
+            <div class="clumsy-silhouette silhouette-3"></div>
+            <div class="clumsy-silhouette silhouette-4"></div>
+            <div class="clumsy-silhouette silhouette-5"></div>
+            <div class="clumsy-silhouette silhouette-6"></div>
+        </div>
+        <div class="menu-content">
+            <h1 class="game-title">FUMBLE<br><span class="title-hero">HERO</span></h1>
+            <div class="menu-buttons">
+                <button class="btn btn-play" id="btn-play">▶ PLAY</button>
+                <button class="btn btn-settings" id="btn-settings">⚙ SETTINGS</button>
+                <button class="btn btn-highscores" id="btn-highscores">🏆 HIGH SCORES</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gameplay Screen -->
+    <div id="gameplay" class="screen">
+        <div class="game-header">
+            <div class="lives-container" id="lives-display">
+                <span class="life-icon">❤️</span>
+                <span class="life-icon">❤️</span>
+                <span class="life-icon">❤️</span>
+            </div>
+            <div class="score-display" id="score-display">0</div>
+            <div class="combo-display" id="combo-display">x1</div>
+        </div>
+        <canvas id="game-canvas"></canvas>
+        <div class="tap-hint" id="tap-hint">TAP for face-plant!</div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over" class="screen">
+        <div class="overlay-backdrop"></div>
+        <div class="game-over-content glass-panel">
+            <h2 class="game-over-title">GAME OVER</h2>
+            <div class="quote-container" id="death-quote">"Tripped over nothing. Classic."</div>
+            <div class="final-score">
+                <span class="score-label">Final Score</span>
+                <span class="score-value" id="final-score">0</span>
+            </div>
+            <div class="high-score-comparison" id="high-score-comparison">
+                <span class="hs-label">High Score:</span>
+                <span class="hs-value" id="high-score-value">0</span>
+                <span class="hs-status" id="hs-status"></span>
+            </div>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-value" id="stat-distance">0</span>
+                    <span class="stat-label">Distance</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="stat-faceplants">0</span>
+                    <span class="stat-label">Face Plants</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="stat-max-combo">0</span>
+                    <span class="stat-label">Max Combo</span>
+                </div>
+            </div>
+            <div class="gameover-buttons">
+                <button class="btn btn-retry" id="btn-retry">🔄 TRY AGAIN</button>
+                <button class="btn btn-menu" id="btn-gameover-menu">🏠 MENU</button>
+                <button class="btn btn-share" id="btn-share">📤 SHARE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div id="settings" class="screen">
+        <div class="settings-content">
+            <h2 class="settings-title">⚙ Settings</h2>
+            <div class="settings-list">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Sound Effects</span>
+                        <span class="setting-desc">Toggle game sounds</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-sound" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Haptic Feedback</span>
+                        <span class="setting-desc">Vibrate on impact</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-haptics" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Difficulty</span>
+                        <span class="setting-desc">Adjust challenge level</span>
+                    </div>
+                    <select id="difficulty-select" class="difficulty-select">
+                        <option value="easy">Easy</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <span class="setting-name">Music</span>
+                        <span class="setting-desc">Background music</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="toggle-music" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+            <button class="btn btn-back" id="btn-back">← BACK</button>
+        </div>
+    </div>
+
+    <!-- High Scores Screen -->
+    <div id="highscores" class="screen">
+        <div class="settings-content">
+            <h2 class="settings-title">🏆 High Scores</h2>
+            <div class="scores-list" id="scores-list">
+                <!-- Populated by JS -->
+            </div>
+            <button class="btn btn-back" id="btn-back-hs">← BACK</button>
+        </div>
+    </div>
+
+    <!-- Particle Canvas Overlay -->
+    <canvas id="particle-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
